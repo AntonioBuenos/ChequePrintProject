@@ -32,9 +32,12 @@ public class DiscountCard {
     @Column(name = "holder_name")
     private String holderName;
 
+<<<<<<< HEAD
     @Column(name = "holder_email")
     private String holderEmail;
 
+=======
+>>>>>>> origin/master
     @Column(name = "discount_rate")
     private Double discountRate;
 
