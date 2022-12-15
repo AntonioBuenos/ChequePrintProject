@@ -23,7 +23,7 @@ import java.sql.Timestamp;
 @ToString
 @EqualsAndHashCode
 @Entity
-public class Product {
+public class Product implements Comparable<Product> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -47,4 +47,9 @@ public class Product {
 
     @Column(name = "termination_date")
     private Timestamp terminationDate;
+
+    @Override
+    public int compareTo(Product o) {
+        return id.compareTo(o.getId());
+    }
 }
