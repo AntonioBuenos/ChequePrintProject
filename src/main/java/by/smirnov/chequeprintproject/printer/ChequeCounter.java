@@ -35,7 +35,7 @@ public class ChequeCounter {
             Product product = entry.getKey();
             double amount = product.getPrice() * entry.getValue();
             if (Boolean.TRUE.equals(product.getIsPromoted())) {
-                promoGoodsQty++;
+                promoGoodsQty += entry.getValue();
                 promoAmount += amount;
             }
             total += amount;

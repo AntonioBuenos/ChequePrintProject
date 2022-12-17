@@ -75,8 +75,6 @@ public class ChequeBuilder {
                 .append(TABLE_FRAME)
                 .append(header)
                 .append(CHEQUE_DIV)
-                .append(String.format(TABLE_FORMAT_POSITIONS_HEADERS, "QTY", "DESCRIPTION", "PRICE", "TOTAL"))
-                .append(TABLE_BLANK)
                 .append(positions)
                 .append(CHEQUE_DIV)
                 .append(footer)
@@ -101,6 +99,9 @@ public class ChequeBuilder {
 
     public StringBuilder buildPositions(Map<Product, Integer> products) {
         StringBuilder positions = new StringBuilder();
+        positions
+                .append(String.format(TABLE_FORMAT_POSITIONS_HEADERS, "QTY", "DESCRIPTION", "PRICE", "TOTAL"))
+                .append(TABLE_BLANK);
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
             int quantity = entry.getValue();
@@ -126,6 +127,7 @@ public class ChequeBuilder {
                 .append(formatLine("CARD DISCOUNT", chequeCounter.getCardDiscountSum()))
                 .append(formatLine("TAXABLE TOT.", chequeCounter.getTaxableAmount()))
                 .append(formatLine("VAT20%", chequeCounter.getVatAmount()))
+                .append(TABLE_BLANK)
                 .append(formatLine("TOTAL", chequeCounter.getTotalAmount()))
                 .append(CHEQUE_DIV)
                 .append(TABLE_BLANK)
@@ -133,11 +135,11 @@ public class ChequeBuilder {
                 .append(TABLE_BLANK);
     }
 
-    public String centrify(String toBeFormated){
+    public String centrify(String toBeFormated) {
         return String.format(TABLE_FORMAT_1, StringUtils.center(toBeFormated, LINE_WIDTH));
     }
 
-    public String formatLine(String name, double value){
+    public String formatLine(String name, double value) {
         return String.format(TABLE_FORMAT_4, name, new DecimalFormat(DECIMAL).format(value));
     }
 }
