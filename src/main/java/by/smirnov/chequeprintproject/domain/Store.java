@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Store {
 
-    private String name;
-    private String address;
-    private String phoneNumber;
+    private final String name;
+    private final String address;
+    private final String phoneNumber;
 }
