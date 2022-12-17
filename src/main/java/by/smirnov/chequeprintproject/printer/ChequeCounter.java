@@ -22,12 +22,10 @@ public class ChequeCounter {
     public ChequeCounter(Map<Product, Integer> products, DiscountCard card) {
         this.products = products;
         this.card = card;
-        analyzeCheque(products);
-        vatAmount = countVatAmount();
-        taxableAmount = countTaxableAmount();
+        processCheque(products);
     }
 
-    private void analyzeCheque(Map<Product, Integer> products) {
+    private void processCheque(Map<Product, Integer> products) {
         int promoGoodsQty = 0;
         double total = 0;
         double promoAmount = 0;
