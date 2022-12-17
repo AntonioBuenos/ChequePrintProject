@@ -46,31 +46,6 @@ public class ChequeBuilder {
 
     private final ChequeCounter chequeCounter;
 
-    public static void main(String[] args) {
-        ProductRepository repository = new ProductSetRepositoryImpl();
-        Map<Product, Integer> products = new HashMap<>();
-        Store store = new Store("DrumsticksStore#1", "Minsk, here", "+375(33)333-44-55");
-        Cashier cashier = new Cashier(1001L, store);
-        products.put(repository.findById(1L), 4);
-        products.put(repository.findById(3L), 2);
-        products.put(repository.findById(5L), 1);
-        products.put(repository.findById(7L), 3);
-        products.put(repository.findById(9L), 5);
-        ChequeCounter chequeCounter = new ChequeCounter(products, DiscountCard
-                .builder()
-                .id(1001L)
-                .holderName("John Smith")
-                .holderEmail("js@bondmail.com")
-                .discountRate(5.0)
-                .isActive(true)
-                .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .build());
-        ChequeBuilder chequeBuilder = new ChequeBuilder(chequeCounter);
-        chequeBuilder.print(cashier);
-    }
-
     public void print(Cashier cashier) {
         StringBuilder cheque = buildCheque(cashier, AD);
         System.out.println(cheque);
