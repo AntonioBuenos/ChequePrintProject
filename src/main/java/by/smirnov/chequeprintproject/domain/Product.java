@@ -39,14 +39,8 @@ public class Product implements Comparable<Product> {
     @Column(name = "creation_date")
     private Timestamp creationDate;
 
-    @Column(name = "modification_date")
-    private Timestamp modificationDate;
-
     @Column(name = "is_deleted")
     private Boolean isDeleted;
-
-    @Column(name = "termination_date")
-    private Timestamp terminationDate;
 
     @Override
     public int compareTo(Product o) {

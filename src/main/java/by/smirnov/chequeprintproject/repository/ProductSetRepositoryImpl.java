@@ -18,7 +18,7 @@ public class ProductSetRepositoryImpl implements ProductRepository {
             .orElse(null);
     }
 
-    public static final Set<Product> products = new TreeSet<>();
+    private static final Set<Product> products = new TreeSet<>();
 
     static {
         products.add(Product.builder()
@@ -27,89 +27,69 @@ public class ProductSetRepositoryImpl implements ProductRepository {
                 .price(14.0)
                 .isPromoted(false)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(2L)
                 .productName("Vic Firth drumsticks 2BN")
                 .price(14.1)
                 .isPromoted(true)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(3L)
                 .productName("Vic Firth drumsticks 5B")
                 .price(14.1)
                 .isPromoted(false)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(4L)
                 .productName("Vic Firth Signature Series Kenny Aronoff")
                 .price(17.0)
                 .isPromoted(true)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(5L)
                 .productName("Vic Firth Signature Series Terry Bozzio")
                 .price(17.0)
                 .isPromoted(true)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(6L)
                 .productName("Vic Firth Signature Series JoJo Mayer")
                 .price(17.0)
                 .isPromoted(true)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(7L)
                 .productName("Vic Firth Signature Series Nicko McBrain")
                 .price(17.0)
                 .isPromoted(false)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(8L)
                 .productName("Vic Firth Signature Series Mike Terrana")
                 .price(17.0)
                 .isPromoted(false)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(9L)
                 .productName("Vic Firth Signature Series Dave Weckl")
                 .price(17.0)
                 .isPromoted(true)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
         products.add(Product.builder()
                 .id(10L)
                 .productName("Drummaster drumsticks 2B USA Hickory")
                 .price(9.0)
                 .isPromoted(false)
                 .creationDate(Timestamp.valueOf(LocalDateTime.now()))
-                .modificationDate(null)
-                .isDeleted(false)
-                .terminationDate(null).build());
+                .isDeleted(false).build());
     }
 }

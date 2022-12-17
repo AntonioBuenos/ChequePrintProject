@@ -24,7 +24,7 @@ import java.sql.Timestamp;
 @ToString
 @EqualsAndHashCode
 @Entity
-public class DiscountCard {
+public class DiscountCard implements Comparable<DiscountCard>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,12 +45,8 @@ public class DiscountCard {
     @Column(name = "creation_date")
     private Timestamp creationDate;
 
-    @Column(name = "modification_date")
-    private Timestamp modificationDate;
-
-    @Column(name = "is_deleted")
-    private Boolean isDeleted;
-
-    @Column(name = "termination_date")
-    private Timestamp terminationDate;
+    @Override
+    public int compareTo(DiscountCard o) {
+        return id.compareTo(o.getId());
+    }
 }
