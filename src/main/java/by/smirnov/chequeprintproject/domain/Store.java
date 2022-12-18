@@ -1,11 +1,22 @@
 package by.smirnov.chequeprintproject.domain;
 
-import lombok.Data;
+public enum Store {
 
-@Data
-public class Store {
+    SHOP(
+            "DrumsticksStore#1",
+            "Minsk, Herearound Str., 111-222",
+            "+375(11)222-33-44"
+    );
 
-    private final String name;
-    private final String address;
-    private final String phoneNumber;
+    public String name;
+    public String address;
+    public String phoneNumber;
+
+    private static Store instance;
+
+    Store(String name, String address, String phoneNumber) {
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
 }
