@@ -19,18 +19,13 @@ public class Runner {
         ProductRepository repository = new ProductSetRepositoryImpl();
         DiscountCardRepository cardRepository = new DiscountCardSetRepositoryImpl();
         Map<Product, Integer> productCart = new HashMap<>();
-        Store store = new Store(
-                "DrumsticksStore#1",
-                "Minsk, Herearound Str., 111-222",
-                "+375(11)222-33-44"
-        );
-        Cashier cashier = new Cashier(1001L, store);
+        Cashier cashier = new Cashier(1001L, Store.SHOP);
         productCart.put(repository.findById(1L), 4);
         productCart.put(repository.findById(3L), 2);
         productCart.put(repository.findById(5L), 1);
         productCart.put(repository.findById(7L), 3);
         productCart.put(repository.findById(9L), 5);
-        ChequeCounter chequeCounter = new ChequeCounter(productCart, cardRepository.findById(1001L));
+        ChequeCounter chequeCounter = new ChequeCounter(productCart, cardRepository.findById(1L));
         ChequeBuilder chequeBuilder = new ChequeBuilder(chequeCounter);
         chequeBuilder.print(cashier);
     }

@@ -73,9 +73,9 @@ public class ChequeBuilder {
         LocalDateTime dateTime = LocalDateTime.now();
         return new StringBuilder()
                 .append(centrify(TITLE))
-                .append(centrify(cashier.getStore().getName()))
-                .append(centrify(cashier.getStore().getAddress()))
-                .append(centrify(PHONE + cashier.getStore().getPhoneNumber()))
+                .append(centrify(cashier.getStore().name))
+                .append(centrify(cashier.getStore().address))
+                .append(centrify(PHONE + cashier.getStore().phoneNumber))
                 .append(BLANK_LINE)
                 .append(String.format(FORMAT_DATE, cashier.getId(), dateTime))
                 .append(String.format(FORMAT_TIME, TIME, dateTime)

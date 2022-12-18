@@ -18,7 +18,6 @@ public class PersistenceProvidersConfiguration {
 
     @Autowired
     @Bean(name = "entityManagerFactory")
-    @SuppressWarnings({"dataSource"})
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();

@@ -20,7 +20,7 @@ public class DiscountCardSetRepositoryImpl implements DiscountCardRepository {
 
     static {
         cards.add(DiscountCard.builder()
-                .id(1001L)
+                .id(1L)
                 .holderEmail("1001@supermail.com")
                 .holderName("John Smith")
                 .discountRate(3.0)
@@ -28,7 +28,7 @@ public class DiscountCardSetRepositoryImpl implements DiscountCardRepository {
                 .creationDate(Timestamp.valueOf("2022-12-17 23:49:38"))
                 .build());
         cards.add(DiscountCard.builder()
-                .id(1002L)
+                .id(2L)
                 .holderEmail("1002@supermail.com")
                 .holderName("Jane Smith")
                 .discountRate(3.0)
@@ -36,7 +36,7 @@ public class DiscountCardSetRepositoryImpl implements DiscountCardRepository {
                 .creationDate(Timestamp.valueOf("2022-12-17 23:49:39"))
                 .build());
         cards.add(DiscountCard.builder()
-                .id(1003L)
+                .id(3L)
                 .holderEmail("1003@supermail.com")
                 .holderName("John Doe")
                 .discountRate(5.0)
@@ -44,7 +44,7 @@ public class DiscountCardSetRepositoryImpl implements DiscountCardRepository {
                 .creationDate(Timestamp.valueOf("2022-12-17 23:49:40"))
                 .build());
         cards.add(DiscountCard.builder()
-                .id(1004L)
+                .id(4L)
                 .holderEmail("1004@supermail.com")
                 .holderName("Jane Doe")
                 .discountRate(5.0)
@@ -52,7 +52,7 @@ public class DiscountCardSetRepositoryImpl implements DiscountCardRepository {
                 .creationDate(Timestamp.valueOf("2022-12-17 23:49:41"))
                 .build());
         cards.add(DiscountCard.builder()
-                .id(1005L)
+                .id(5L)
                 .holderEmail("1005@supermail.com")
                 .holderName("Mescalero El Camino")
                 .discountRate(7.0)
