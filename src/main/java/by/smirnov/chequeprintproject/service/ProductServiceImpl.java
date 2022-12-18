@@ -6,13 +6,14 @@ import by.smirnov.chequeprintproject.domain.ChequeResponse;
 import by.smirnov.chequeprintproject.domain.DiscountCard;
 import by.smirnov.chequeprintproject.domain.Product;
 import by.smirnov.chequeprintproject.exception.NoSuchEntityException;
-import by.smirnov.chequeprintproject.printer.ChequeBuilder;
-import by.smirnov.chequeprintproject.printer.ChequeCounter;
+import by.smirnov.chequeprintproject.service.chequebuilder.ChequeCounter;
+import by.smirnov.chequeprintproject.service.chequebuilder.EntityChequeBuilder;
 import by.smirnov.chequeprintproject.repository.ProductDBRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -33,9 +34,7 @@ public class ProductServiceImpl implements ProductService {
     public ChequeResponse getCheque(ChequeRequest request) {
         DiscountCard card = discountCardService.findById(request.getCardId());
         ChequeCounter chequeCounter = new ChequeCounter(convertCart(request.getProducts()), card);
-        ChequeBuilder chequeBuilder = new ChequeBuilder(chequeCounter);
-        chequeBuilder.print(Cashier.getById(request.getCashierId()));
-        return null;
+        return new EntityChequeBuilder(chequeCounter).print(Cashier.getById(request.getCashierId()));
     }
 
     private Map<Product, Integer> convertCart(Map<Long, Integer> cart){
@@ -45,5 +44,10 @@ public class ProductServiceImpl implements ProductService {
             products.put(product, entry.getValue());
         }
         return products;
+    }
+
+    @Override
+    public List<Product> findAll() {
+        return repository.findAll();
     }
 }

@@ -1,4 +1,4 @@
-package by.smirnov.chequeprintproject.printer;
+package by.smirnov.chequeprintproject.service.chequebuilder;
 
 import org.apache.commons.lang3.StringUtils;
 

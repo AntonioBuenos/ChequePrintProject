@@ -1,4 +1,4 @@
-package by.smirnov.chequeprintproject.printer;
+package by.smirnov.chequeprintproject.service.chequebuilder;
 
 import by.smirnov.chequeprintproject.domain.DiscountCard;
 import by.smirnov.chequeprintproject.domain.Product;

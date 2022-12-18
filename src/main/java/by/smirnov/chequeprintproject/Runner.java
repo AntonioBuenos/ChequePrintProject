@@ -3,8 +3,8 @@ package by.smirnov.chequeprintproject;
 import by.smirnov.chequeprintproject.domain.Cashier;
 import by.smirnov.chequeprintproject.domain.Product;
 import by.smirnov.chequeprintproject.domain.Store;
-import by.smirnov.chequeprintproject.printer.ChequeBuilder;
-import by.smirnov.chequeprintproject.printer.ChequeCounter;
+import by.smirnov.chequeprintproject.service.chequebuilder.StringChequeBuilder;
+import by.smirnov.chequeprintproject.service.chequebuilder.ChequeCounter;
 import by.smirnov.chequeprintproject.repository.DiscountCardRepository;
 import by.smirnov.chequeprintproject.repository.DiscountCardSetRepositoryImpl;
 import by.smirnov.chequeprintproject.repository.ProductRepository;
@@ -26,7 +26,7 @@ public class Runner {
         productCart.put(repository.findById(7L), 3);
         productCart.put(repository.findById(9L), 5);
         ChequeCounter chequeCounter = new ChequeCounter(productCart, cardRepository.findById(1L));
-        ChequeBuilder chequeBuilder = new ChequeBuilder(chequeCounter);
+        StringChequeBuilder chequeBuilder = new StringChequeBuilder(chequeCounter);
         chequeBuilder.print(cashier);
     }
 }

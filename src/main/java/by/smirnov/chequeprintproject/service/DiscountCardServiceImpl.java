@@ -6,6 +6,8 @@ import by.smirnov.chequeprintproject.repository.DiscountCardDBRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DiscountCardServiceImpl implements DiscountCardService{
@@ -17,5 +19,10 @@ public class DiscountCardServiceImpl implements DiscountCardService{
         return repository
                 .findById(id)
                 .orElseThrow(NoSuchEntityException::new);
+    }
+
+    @Override
+    public List<DiscountCard> findAll() {
+        return repository.findAll();
     }
 }
