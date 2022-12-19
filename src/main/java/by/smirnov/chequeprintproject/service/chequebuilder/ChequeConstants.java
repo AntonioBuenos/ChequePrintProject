@@ -11,9 +11,9 @@ public interface ChequeConstants {
     String FORMAT_DATE = "CASHIER: %-34s DATE: %tD\n";
     String TIME = "TIME:";
     String FORMAT_TIME = "%49s %tT\n";
-    String FORMAT_POSITION = "%2d  %-39s $%3.2f $%4.2f\n";
-    String FORMAT_POSITIONS_HEADERS = "%-3s %-39s %-6s %-6s\n";
-    String FORMAT_FOOTER = "%-50s $%s\n";
+    String FORMAT_POSITION = "%2d  %-38s %6.2f$ %6.2f$\n";
+    String FORMAT_POSITIONS_HEADERS = "%-3s %-38s %-6s %-6s\n";
+    String FORMAT_FOOTER = "%-49s %7s$\n";
     String AD = "*** Place your ad here ***";
     String TITLE = "CASH RECEIPT";
     String QTY = "QTY";

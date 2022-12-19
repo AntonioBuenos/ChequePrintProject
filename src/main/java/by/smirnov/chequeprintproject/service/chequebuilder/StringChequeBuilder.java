@@ -25,7 +25,7 @@ public class StringChequeBuilder {
         System.out.println(cheque);
     }
 
-    public void writeToFile(StringBuilder cheque){
+    public void writeToFile(StringBuilder cheque) {
         String path = getPath("Cheques.txt");
         try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
             writer.println(cheque);
@@ -68,23 +68,29 @@ public class StringChequeBuilder {
     public StringBuilder buildPositions(Map<Product, Integer> products) {
         StringBuilder positions = new StringBuilder();
         positions
-                .append(String.format(ChequeConstants.FORMAT_POSITIONS_HEADERS, ChequeConstants.QTY, ChequeConstants.DESC, ChequeConstants.PRICE, ChequeConstants.TOTAL))
+                .append(String.format(ChequeConstants.FORMAT_POSITIONS_HEADERS,
+                        ChequeConstants.QTY,
+                        ChequeConstants.DESC,
+                        ChequeConstants.PRICE,
+                        ChequeConstants.TOTAL))
                 .append(ChequeConstants.BLANK_LINE);
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
-            Product product = entry.getKey();
-            int quantity = entry.getValue();
-            double price = product.getPrice();
-            double amount = price * quantity;
-            positions
-                    .append(String.format(ChequeConstants.FORMAT_POSITION,
-                                    quantity,
-                                    product.getProductName(),
-                                    price,
-                                    amount
-                            )
-                    );
+            positions.append(formatPosition(entry));
         }
         return positions;
+    }
+
+    private String formatPosition(Map.Entry<Product, Integer> entry) {
+        Product product = entry.getKey();
+        int quantity = entry.getValue();
+        double price = product.getPrice();
+        double amount = price * quantity;
+        return String.format(ChequeConstants.FORMAT_POSITION,
+                quantity,
+                normalizeLength(product.getProductName(), 38),
+                price,
+                amount
+        );
     }
 
     public StringBuilder buildFooter(String ad) {
@@ -108,5 +114,10 @@ public class StringChequeBuilder {
 
     public String formatLine(String name, double value) {
         return String.format(ChequeConstants.FORMAT_FOOTER, name, new DecimalFormat(ChequeConstants.DECIMAL).format(value));
+    }
+
+    public String normalizeLength(String line, int length) {
+        if (line.length() >= length) return line.substring(0, length);
+        return line;
     }
 }
