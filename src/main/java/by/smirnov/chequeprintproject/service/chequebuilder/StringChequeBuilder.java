@@ -5,9 +5,14 @@ import by.smirnov.chequeprintproject.domain.Product;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.Map;
+
+import static by.smirnov.chequeprintproject.util.PathGetter.getPath;
 
 @RequiredArgsConstructor
 public class StringChequeBuilder {
@@ -16,7 +21,17 @@ public class StringChequeBuilder {
 
     public void print(Cashier cashier) {
         StringBuilder cheque = buildCheque(cashier, ChequeConstants.AD);
+        writeToFile(cheque);
         System.out.println(cheque);
+    }
+
+    public void writeToFile(StringBuilder cheque){
+        String path = getPath("Cheques.txt");
+        try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
+            writer.println(cheque);
+        } catch (IOException e) {
+            throw new AssertionError(e);
+        }
     }
 
     public StringBuilder buildCheque(Cashier cashier, String ad) {
