@@ -62,7 +62,7 @@ public class ChequeCounter {
     }
 
     private double countVatAmount() {
-        return totalAmount / 120 * 20;
+        return Math.round(100 * (totalAmount / 120 * 20))*0.01;
     }
 
     private double countTaxableAmount() {

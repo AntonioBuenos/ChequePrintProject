@@ -34,7 +34,7 @@ public class EntityChequeBuilder {
                 .positions(buildPositions(products))
                 .sum(chequeCounter.getGrossChequeAmount())
                 .promoDiscount(chequeCounter.getPromotionDiscountSum())
-                .cardDicsount(chequeCounter.getCardDiscountSum())
+                .cardDiscount(chequeCounter.getCardDiscountSum())
                 .taxable(chequeCounter.getTaxableAmount())
                 .vat(chequeCounter.getVatAmount())
                 .total(chequeCounter.getTotalAmount())

@@ -14,5 +14,4 @@ public interface ProductService {
 
     ChequeResponse getCheque(ChequeRequest request);
 
-    List<Product> findAll();
 }

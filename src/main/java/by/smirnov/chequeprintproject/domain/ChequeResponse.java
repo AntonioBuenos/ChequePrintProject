@@ -25,14 +25,16 @@ public class ChequeResponse {
     private String address;
     private String phoneNumber;
     private Long cashierNumber;
+    @EqualsAndHashCode.Exclude
     private LocalDate date;
+    @EqualsAndHashCode.Exclude
     private LocalTime time;
 
     private List<Position> positions;
 
     private Double sum;
     private Double promoDiscount;
-    private Double cardDicsount;
+    private Double cardDiscount;
     private Double taxable;
     private Double vat;
     private Double total;

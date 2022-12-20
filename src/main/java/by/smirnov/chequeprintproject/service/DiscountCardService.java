@@ -8,5 +8,4 @@ public interface DiscountCardService {
 
     DiscountCard findById(Long id);
 
-    List<DiscountCard> findAll();
 }

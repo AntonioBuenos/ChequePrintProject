@@ -21,8 +21,4 @@ public class DiscountCardServiceImpl implements DiscountCardService{
                 .orElseThrow(NoSuchEntityException::new);
     }
 
-    @Override
-    public List<DiscountCard> findAll() {
-        return repository.findAll();
-    }
 }

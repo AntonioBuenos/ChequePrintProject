@@ -46,8 +46,4 @@ public class ProductServiceImpl implements ProductService {
         return products;
     }
 
-    @Override
-    public List<Product> findAll() {
-        return repository.findAll();
-    }
 }
