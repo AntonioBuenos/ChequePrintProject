@@ -17,8 +17,8 @@ import java.util.Map;
 
 public class InputHandler {
 
-    public static final String DIV = "-";
-    public static final String DIV_SPACE = " ";
+    private static final String DIV = "-";
+    private static final String DIV_SPACE = " ";
     private final ProductRepository repository;
     private final DiscountCardRepository cardRepository;
 
@@ -40,20 +40,25 @@ public class InputHandler {
         }
     }
 
-    public void handleCheque(String input) {
+    private void handleCheque(String input) {
         handleCheque(input.split(DIV_SPACE));
     }
 
-    public void handleCheque(String[] params) {
+    private void handleCheque(String[] params) {
+        DiscountCard card = cardRepository.findById(getValue(params[params.length - 2]));
+        Cashier cashier = new Cashier(getValue(params[params.length - 1]), Store.SHOP);
+        StringChequeBuilder chequeBuilder = new StringChequeBuilder(
+                new ChequeCounter(getProductCart(params), card));
+        chequeBuilder.print(cashier);
+    }
+
+    private Map<Product, Integer> getProductCart(String[] params){
         Map<Product, Integer> productCart = new HashMap<>();
         for (int i = 2; i < params.length - 2; i++) {
             String[] productLine = params[i].split(DIV);
             productCart.put(repository.findById(Long.parseLong(productLine[0])), Integer.parseInt(productLine[1]));
         }
-        DiscountCard card = cardRepository.findById(getValue(params[params.length - 2]));
-        Cashier cashier = new Cashier(getValue(params[params.length - 1]), Store.SHOP);
-        StringChequeBuilder chequeBuilder = new StringChequeBuilder(new ChequeCounter(productCart, card));
-        chequeBuilder.print(cashier);
+        return productCart;
     }
 
     private Long getValue(String param) {
