@@ -1,6 +1,6 @@
-package by.smirnov.chequeprintproject.exception;
+package by.smirnov.chequeprintproject.exceptionhandler;
 
-import static by.smirnov.chequeprintproject.exception.ExceptionConstants.NOT_FOUND_MESSAGE;
+import static by.smirnov.chequeprintproject.exceptionhandler.ExceptionConstants.NOT_FOUND_MESSAGE;
 
 public class NoSuchEntityException extends RuntimeException {
 

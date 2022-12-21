@@ -1,6 +1,6 @@
 package by.smirnov.chequeprintproject;
 
-import by.smirnov.chequeprintproject.handler.InputHandler;
+import by.smirnov.chequeprintproject.service.handler.InputHandler;
 
 public class ChequeRunner {
 

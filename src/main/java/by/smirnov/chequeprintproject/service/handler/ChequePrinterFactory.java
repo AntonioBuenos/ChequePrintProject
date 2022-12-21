@@ -1,4 +1,4 @@
-package by.smirnov.chequeprintproject.service;
+package by.smirnov.chequeprintproject.service.handler;
 
 import by.smirnov.chequeprintproject.printer.ChequePrinter;
 import by.smirnov.chequeprintproject.printer.ConsoleChequePrinter;

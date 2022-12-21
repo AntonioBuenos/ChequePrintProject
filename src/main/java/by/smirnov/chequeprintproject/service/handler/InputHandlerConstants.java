@@ -1,4 +1,4 @@
-package by.smirnov.chequeprintproject.handler;
+package by.smirnov.chequeprintproject.service.handler;
 
 public interface InputHandlerConstants {
 

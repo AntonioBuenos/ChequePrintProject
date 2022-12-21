@@ -1,4 +1,4 @@
-package by.smirnov.chequeprintproject.service;
+package by.smirnov.chequeprintproject.service.restservice;
 
 import by.smirnov.chequeprintproject.domain.ChequeRequest;
 import by.smirnov.chequeprintproject.domain.ChequeResponse;

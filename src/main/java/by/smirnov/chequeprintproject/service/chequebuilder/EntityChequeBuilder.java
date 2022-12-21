@@ -40,7 +40,7 @@ public class EntityChequeBuilder implements ChequeBuilder<ChequeResponse> {
                 .build();
     }
 
-    public List<Position> buildPositions(Map<Product, Integer> products) {
+    private List<Position> buildPositions(Map<Product, Integer> products) {
         List<Position> positions = new ArrayList<>();
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();

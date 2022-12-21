@@ -2,7 +2,7 @@ package by.smirnov.chequeprintproject.controller;
 
 import by.smirnov.chequeprintproject.domain.ChequeRequest;
 import by.smirnov.chequeprintproject.domain.ChequeResponse;
-import by.smirnov.chequeprintproject.service.ProductService;
+import by.smirnov.chequeprintproject.service.restservice.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

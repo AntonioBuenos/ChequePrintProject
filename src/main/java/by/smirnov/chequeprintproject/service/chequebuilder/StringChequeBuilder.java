@@ -34,7 +34,7 @@ public class StringChequeBuilder implements ChequeBuilder<StringBuilder> {
         return cheque;
     }
 
-    public StringBuilder buildHeader(Cashier cashier) {
+    private StringBuilder buildHeader(Cashier cashier) {
         LocalDateTime dateTime = LocalDateTime.now();
         return new StringBuilder()
                 .append(centrify(ChequeConstants.TITLE))
@@ -47,7 +47,7 @@ public class StringChequeBuilder implements ChequeBuilder<StringBuilder> {
                 );
     }
 
-    public StringBuilder buildPositions(Map<Product, Integer> products) {
+    private StringBuilder buildPositions(Map<Product, Integer> products) {
         StringBuilder positions = new StringBuilder();
         positions
                 .append(String.format(ChequeConstants.FORMAT_POSITIONS_HEADERS,
@@ -75,7 +75,7 @@ public class StringChequeBuilder implements ChequeBuilder<StringBuilder> {
         );
     }
 
-    public StringBuilder buildFooter(String ad) {
+    private StringBuilder buildFooter(String ad) {
         return new StringBuilder()
                 .append(formatLine(ChequeConstants.SUM, chequeCounter.getGrossChequeAmount()))
                 .append(formatLine(ChequeConstants.PROMO_DISC, chequeCounter.getPromotionDiscountSum()))
@@ -90,15 +90,15 @@ public class StringChequeBuilder implements ChequeBuilder<StringBuilder> {
                 .append(ChequeConstants.BLANK_LINE);
     }
 
-    public String centrify(String toBeFormated) {
+    private String centrify(String toBeFormated) {
         return String.format(ChequeConstants.FORMAT_LINE, StringUtils.center(toBeFormated, ChequeConstants.LINE_WIDTH));
     }
 
-    public String formatLine(String name, double value) {
+    private String formatLine(String name, double value) {
         return String.format(ChequeConstants.FORMAT_FOOTER, name, new DecimalFormat(ChequeConstants.DECIMAL).format(value));
     }
 
-    public String normalizeLength(String line, int length) {
+    private String normalizeLength(String line, int length) {
         if (line.length() >= length) return line.substring(0, length);
         return line;
     }
