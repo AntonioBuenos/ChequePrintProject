@@ -25,7 +25,6 @@ public class ProductServiceImpl implements ProductService {
 
     private final ProductDBRepository repository;
     private final DiscountCardService discountCardService;
-    private EntityChequeBuilder chequeBuilder;
 
     @Override
     public Product findById(Long id) {
@@ -42,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
         ChequeCounter chequeCounter = new ChequeCounter(
                 convertCart(request.getProducts()),
                 card);
-        chequeBuilder = new EntityChequeBuilder(chequeCounter);
+        EntityChequeBuilder chequeBuilder = new EntityChequeBuilder(chequeCounter);
         Cashier cashier = Cashier.getById(request.getCashierId());
         if (cashier == null) throw new NoSuchEntityException(CASHIER_NOT_FOUND_MESSAGE + cardId);
         return chequeBuilder.buildCheque(cashier);
