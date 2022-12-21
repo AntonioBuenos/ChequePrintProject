@@ -95,7 +95,7 @@ Response format example:
    for it.
 
 ### Printed Cheque Example:
-![This is an image](https://github.com/AntonioBuenos/ChequePrintProject/Cheque.JPG)
+![This is an image](https://i.ibb.co/HD5gf0D/Cheque.jpg)
 
 ### DB Diagram:
-![This is an image](https://github.com/AntonioBuenos/ChequePrintProject/chequebase.jpg)
+![This is an image](https://i.ibb.co/9w0xmYz/chequebase.jpg)
