@@ -33,54 +33,63 @@ Instructions:
    You shall refer Map<Long, Integer> products (where Long is for Product Id and Integer is for quantity of products),
    Long cardId (for Discount card Id) and Long cashierId (for cashier Id). Request may be proceeded e.g. by the means of
    your Frontend, Postman or Intellij IDEA generated requests.
-   Example:
-   {
-   "products": {
-   "1": 2,
-   "2": 3,
-   "3": 4
-   },
-   "cardId": 1,
-   "cashierId": 1001
-   }
-4) Console requests will be printed both to console and to file Cheques.txt (shall be added to the cheques band) in the
-   app resources folder.
-5) Spring Boot Rest API request will return JSON Response with all information allowable in printed console app cheque.
-   Response format example:
-   {
-   "title": "CASH RECEIPT",
-   "storeName": "DrumsticksStore#1",
-   "address": "Minsk, Herearound Str., 111-222",
-   "phoneNumber": "tel. +375(11)222-33-44",
-   "cashierNumber": 1001,
-   "date": "2022-12-21",
-   "time": "09:15:29.0345229",
-   "positions": [
-   {
-   "qty": 2,
-   "description": "Vic Firth drumsticks 2B",
-   "price": 14.0,
-   "positionTotal": 28.0
-   },
-   {
-   "qty": 3,
-   "description": "Vic Firth drumsticks 2BN",
-   "price": 14.1,
-   "positionTotal": 42.3
-   },
-   {
-   "qty": 4,
-   "description": "Vic Firth drumsticks 5B",
-   "price": 14.1,
-   "positionTotal": 56.4
-   }
-   ],
-   "sum": 126.69,
-   "promoDiscount": 0.0,
-   "cardDiscount": 3.80,
-   "taxable": 102.42,
-   "vat": 20.48,
-   "total": 122.90,
-   "ad": "*** Place your ad here ***"
-   }
 
+Example:
+
+{
+"products": {
+"1": 2,
+"2": 3,
+"3": 4
+},
+"cardId": 1,
+"cashierId": 1001
+}
+
+5) Console requests will be printed both to console and to file Cheques.txt (shall be added to the cheques band) in the
+   app resources folder.
+6) Spring Boot Rest API request will return JSON Response with all information allowable in printed console app cheque.
+
+Response format example:
+
+{
+"title": "CASH RECEIPT",
+"storeName": "DrumsticksStore#1",
+"address": "Minsk, Herearound Str., 111-222",
+"phoneNumber": "tel. +375(11)222-33-44",
+"cashierNumber": 1001,
+"date": "2022-12-21",
+"time": "09:15:29.0345229",
+"positions": [
+{
+"qty": 2,
+"description": "Vic Firth drumsticks 2B",
+"price": 14.0,
+"positionTotal": 28.0
+},
+{
+"qty": 3,
+"description": "Vic Firth drumsticks 2BN",
+"price": 14.1,
+"positionTotal": 42.3
+},
+{
+"qty": 4,
+"description": "Vic Firth drumsticks 5B",
+"price": 14.1,
+"positionTotal": 56.4
+}
+],
+"sum": 126.69,
+"promoDiscount": 0.0,
+"cardDiscount": 3.80,
+"taxable": 102.42,
+"vat": 20.48,
+"total": 122.90,
+"ad": "*** Place your ad here ***"
+}
+
+7) PostgreSQL settings as well as other necessary Spring Boot settings are listed in application.properties file.
+8) DB init script is described by Flyway migration script in resources.db.migration.V1_1__initial_script.sql.
+9) DB may be filled by test product and discount card objects. You may use script in resources.DB_insert_entities.sql
+   for it.
