@@ -38,6 +38,7 @@ public class Product implements Comparable<Product> {
     @Column(name = "is_promoted")
     private Boolean isPromoted;
 
+    @EqualsAndHashCode.Exclude
     @Column(name = "creation_date")
     private Timestamp creationDate;
 
