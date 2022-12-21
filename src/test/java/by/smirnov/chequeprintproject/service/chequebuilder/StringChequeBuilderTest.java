@@ -47,7 +47,7 @@ class StringChequeBuilderTest {
                     "TOTAL                                               119,7$\n" +
                     "==========================================================\n" +
                     "\n" +
-                    "                            ad                            \n" +
+                    "                *** Place your ad here ***                \n" +
                     "\n" +
                     "---------------------------------------------------------";
 
@@ -73,7 +73,6 @@ class StringChequeBuilderTest {
     @Test
     void buildChequeTest() {
         Cashier cashier = new Cashier(1001L, SHOP);
-        String ad = "ad";
 
         ChequeCounter chequeCounter = new ChequeCounter(
                 products,
@@ -86,9 +85,9 @@ class StringChequeBuilderTest {
         productList.add(new Position(4, "Vic Firth drumsticks 2B", 14.0, 4 * 14.0));
         productList.add(new Position(5, "Vic Firth drumsticks 2BN", 14.0, 5 * 14.0));
 
-        assertTrue(chequeBuilder.buildCheque(cashier, ad).toString().contains(chequeBeginning));
-        assertTrue(chequeBuilder.buildCheque(cashier, ad).toString().contains(chequeEnd));
-/*                        assertEquals(chequeBuilder.buildCheque(cashier, ad).toString(), chequeBeginning);*/
+        assertTrue(chequeBuilder.buildCheque(cashier).toString().contains(chequeBeginning));
+        assertTrue(chequeBuilder.buildCheque(cashier).toString().contains(chequeEnd));
+/*                        assertEquals(chequeBuilder.buildCheque(cashier).toString(), chequeBeginning);*/
     }
 
 

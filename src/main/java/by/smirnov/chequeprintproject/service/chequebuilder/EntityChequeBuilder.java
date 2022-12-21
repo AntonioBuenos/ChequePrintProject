@@ -11,16 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static by.smirnov.chequeprintproject.service.chequebuilder.ChequeConstants.AD;
+
 @RequiredArgsConstructor
-public class EntityChequeBuilder {
+public class EntityChequeBuilder implements ChequeBuilder<ChequeResponse> {
 
     private final ChequeCounter chequeCounter;
 
-    public ChequeResponse print(Cashier cashier) {
-        return buildCheque(cashier, ChequeConstants.AD);
-    }
-
-    public ChequeResponse buildCheque(Cashier cashier, String ad) {
+    public ChequeResponse buildCheque(Cashier cashier) {
         LocalDateTime dateTime = LocalDateTime.now();
         Map<Product, Integer> products = chequeCounter.getProducts();
         return ChequeResponse.builder()
@@ -38,7 +36,7 @@ public class EntityChequeBuilder {
                 .taxable(chequeCounter.getTaxableAmount())
                 .vat(chequeCounter.getVatAmount())
                 .total(chequeCounter.getTotalAmount())
-                .ad(ad)
+                .ad(AD)
                 .build();
     }
 

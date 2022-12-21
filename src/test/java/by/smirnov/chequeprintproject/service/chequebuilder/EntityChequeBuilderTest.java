@@ -5,11 +5,8 @@ import by.smirnov.chequeprintproject.domain.ChequeResponse;
 import by.smirnov.chequeprintproject.domain.DiscountCard;
 import by.smirnov.chequeprintproject.domain.Position;
 import by.smirnov.chequeprintproject.domain.Product;
-import by.smirnov.chequeprintproject.domain.Store;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -20,7 +17,6 @@ import java.util.Map;
 
 import static by.smirnov.chequeprintproject.domain.Store.SHOP;
 import static by.smirnov.chequeprintproject.service.chequebuilder.ChequeConstants.AD;
-import static by.smirnov.chequeprintproject.service.chequebuilder.ChequeConstants.TITLE;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EntityChequeBuilderTest {
@@ -95,7 +91,6 @@ class EntityChequeBuilderTest {
                 .ad(AD)
                 .build();
 
-        assertEquals(expected, chequeBuilder.buildCheque(cashier, AD));
-        assertEquals(expected, chequeBuilder.print(cashier));
+        assertEquals(expected, chequeBuilder.buildCheque(cashier));
     }
 }
