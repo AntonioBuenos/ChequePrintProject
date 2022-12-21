@@ -2,10 +2,10 @@
 
 Console Project for printing cheques + RESTful Spring cheque printing functionality backend API
 
-The project stack:
+### The project stack:
 
 - Java 17 and Gradle 7.5;
-- Spring Boot;
+- Spring 6 & Spring Boot 3;
 - Spring Data JPA Repositories;
 - DB: PostgreSQL with 2 tables (product и discount_card);
 - DB connection pool: Hikari;
@@ -14,7 +14,7 @@ The project stack:
 - Additional libraries: Lombok & Apache Commons;
 - Git & GitHub.
 
-Instructions:
+### Instructions:
 
 1) The app consists of console and Spring Boot Rest API parts.
 2) Console part starts through CheckRunner. Parameters shall
@@ -93,3 +93,9 @@ Response format example:
 8) DB init script is described by Flyway migration script in resources.db.migration.V1_1__initial_script.sql.
 9) DB may be filled by test product and discount card objects. You may use script in resources.DB_insert_entities.sql
    for it.
+
+### Printed Cheque Example:
+![This is an image](https://disk.yandex.ru/i/zMQt2VA09gUJlw)
+
+### DB Diagram:
+![This is an image](https://disk.yandex.ru/i/MvLYR0ohDhZ2FQ)
