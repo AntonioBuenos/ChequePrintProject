@@ -19,17 +19,17 @@ import java.util.List;
 import java.util.Map;
 
 import static by.smirnov.chequeprintproject.domain.Store.SHOP;
+import static by.smirnov.chequeprintproject.service.chequebuilder.ChequeConstants.AD;
 import static by.smirnov.chequeprintproject.service.chequebuilder.ChequeConstants.TITLE;
 import static org.junit.jupiter.api.Assertions.*;
 
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class EntityChequeBuilderTest {
 
-    private Map<Product, Integer> products = new HashMap<>();
+    private static Map<Product, Integer> products = new HashMap<>();
     private EntityChequeBuilder chequeBuilder;
 
     @BeforeAll
-    void init() {
+    static void init() {
         products.put(Product.builder()
                 .id(1L)
                 .productName("Vic Firth drumsticks 2B")
@@ -64,7 +64,6 @@ class EntityChequeBuilderTest {
     @Test
     void buildChequeTest() {
         Cashier cashier = new Cashier(1001L, SHOP);
-        String ad = "ad";
 
         ChequeCounter chequeCounter = new ChequeCounter(
                 products,
@@ -93,9 +92,10 @@ class EntityChequeBuilderTest {
                 .taxable(99.75)
                 .vat(19.95)
                 .total(119.7)
-                .ad("ad")
+                .ad(AD)
                 .build();
 
-        assertEquals(expected, chequeBuilder.buildCheque(cashier, ad));
+        assertEquals(expected, chequeBuilder.buildCheque(cashier, AD));
+        assertEquals(expected, chequeBuilder.print(cashier));
     }
 }
