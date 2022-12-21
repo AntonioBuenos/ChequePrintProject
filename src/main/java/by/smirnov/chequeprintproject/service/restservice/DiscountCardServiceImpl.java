@@ -1,7 +1,6 @@
 package by.smirnov.chequeprintproject.service.restservice;
 
 import by.smirnov.chequeprintproject.domain.DiscountCard;
-import by.smirnov.chequeprintproject.exceptionhandler.NoSuchEntityException;
 import by.smirnov.chequeprintproject.repository.DiscountCardDBRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ public class DiscountCardServiceImpl implements DiscountCardService{
     public DiscountCard findById(Long id) {
         return repository
                 .findById(id)
-                .orElseThrow(NoSuchEntityException::new);
+                .orElse(null);
     }
 
 }
