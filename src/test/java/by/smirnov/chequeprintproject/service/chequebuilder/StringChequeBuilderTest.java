@@ -29,8 +29,7 @@ class StringChequeBuilderTest {
                     "             Minsk, Herearound Str., 111-222              \n" +
                     "                  tel. +375(11)222-33-44                  \n" +
                     "\n" +
-                    "CASHIER: 1001                               DATE: 12/20/22\n" +
-                    "                                            TIME: ";
+                    "CASHIER: 1001                               DATE: ";
 
     private String chequeEnd =
             "==========================================================\n" +
@@ -89,7 +88,7 @@ class StringChequeBuilderTest {
 
         assertTrue(chequeBuilder.buildCheque(cashier, ad).toString().contains(chequeBeginning));
         assertTrue(chequeBuilder.buildCheque(cashier, ad).toString().contains(chequeEnd));
-        /*                assertEquals(chequeBuilder.buildCheque(cashier, ad).toString(), chequeBeginning);*/
+/*                        assertEquals(chequeBuilder.buildCheque(cashier, ad).toString(), chequeBeginning);*/
     }
 
 

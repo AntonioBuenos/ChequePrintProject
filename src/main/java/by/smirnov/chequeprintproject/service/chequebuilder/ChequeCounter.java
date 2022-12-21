@@ -4,7 +4,9 @@ import by.smirnov.chequeprintproject.domain.DiscountCard;
 import by.smirnov.chequeprintproject.domain.Product;
 import by.smirnov.chequeprintproject.domain.Promotion;
 import lombok.Getter;
+import org.apache.commons.math3.util.Precision;
 
+import java.math.BigDecimal;
 import java.util.Map;
 
 @Getter
@@ -27,18 +29,18 @@ public class ChequeCounter {
 
     private void processCheque(Map<Product, Integer> products) {
         int promoGoodsQty = 0;
-        double total = 0;
-        double promoAmount = 0;
+        BigDecimal total = new BigDecimal(0);
+        BigDecimal promoAmount = new BigDecimal(0);
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             Product product = entry.getKey();
-            double amount = product.getPrice() * entry.getValue();
+            BigDecimal amount = BigDecimal.valueOf(product.getPrice() * entry.getValue());
             if (Boolean.TRUE.equals(product.getIsPromoted())) {
                 promoGoodsQty += entry.getValue();
-                promoAmount += amount;
+                promoAmount = promoAmount.add(amount);
             }
-            total += amount;
+            total = total.add(amount);
         }
-        grossChequeAmount = total;
+        grossChequeAmount = total.doubleValue();
         promotionDiscountSum = countPromotionDiscount(promoGoodsQty, promoAmount);
         cardDiscountSum = countCardDiscount();
         totalAmount = countTotalAmount();
@@ -47,12 +49,12 @@ public class ChequeCounter {
     }
 
     private double countCardDiscount() {
-        return card.getDiscountRate() * grossChequeAmount / 100;
+        return Precision.round(card.getDiscountRate() * grossChequeAmount / 100, 2);
     }
 
-    private double countPromotionDiscount(int promoGoodsQty, double promoAmount) {
+    private double countPromotionDiscount(int promoGoodsQty, BigDecimal promoAmount) {
         if (promoGoodsQty >= Promotion.minimalGoodsQty) {
-            return promoAmount * Promotion.promotionalDiscount / 100;
+            return promoAmount.multiply(BigDecimal.valueOf(Promotion.promotionalDiscount / 100)).doubleValue();
         }
         return 0;
     }
@@ -62,7 +64,7 @@ public class ChequeCounter {
     }
 
     private double countVatAmount() {
-        return Math.round(100 * (totalAmount / 120 * 20))*0.01;
+        return Precision.round(totalAmount / 120 * 20, 2);
     }
 
     private double countTaxableAmount() {

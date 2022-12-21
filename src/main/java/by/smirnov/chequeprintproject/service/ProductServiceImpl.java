@@ -6,14 +6,13 @@ import by.smirnov.chequeprintproject.domain.ChequeResponse;
 import by.smirnov.chequeprintproject.domain.DiscountCard;
 import by.smirnov.chequeprintproject.domain.Product;
 import by.smirnov.chequeprintproject.exception.NoSuchEntityException;
+import by.smirnov.chequeprintproject.repository.ProductDBRepository;
 import by.smirnov.chequeprintproject.service.chequebuilder.ChequeCounter;
 import by.smirnov.chequeprintproject.service.chequebuilder.EntityChequeBuilder;
-import by.smirnov.chequeprintproject.repository.ProductDBRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service

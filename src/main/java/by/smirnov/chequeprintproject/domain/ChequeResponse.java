@@ -29,9 +29,7 @@ public class ChequeResponse {
     private LocalDate date;
     @EqualsAndHashCode.Exclude
     private LocalTime time;
-
     private List<Position> positions;
-
     private Double sum;
     private Double promoDiscount;
     private Double cardDiscount;

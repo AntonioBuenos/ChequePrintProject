@@ -1,6 +1,6 @@
-package by.smirnov.chequeprintproject.parser;
+package by.smirnov.chequeprintproject.util;
 
-import by.smirnov.chequeprintproject.util.PathGetter;
+import lombok.experimental.UtilityClass;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@UtilityClass
 public class InputFileReader {
 
     public static List<String> readFile(String path){

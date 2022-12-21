@@ -25,9 +25,9 @@ public class EntityChequeBuilder {
         Map<Product, Integer> products = chequeCounter.getProducts();
         return ChequeResponse.builder()
                 .title(ChequeConstants.TITLE)
-                .storeName(cashier.getStore().name)
-                .address(cashier.getStore().address)
-                .phoneNumber(ChequeConstants.PHONE + cashier.getStore().phoneNumber)
+                .storeName(cashier.getStore().getName())
+                .address(cashier.getStore().getAddress())
+                .phoneNumber(ChequeConstants.PHONE + cashier.getStore().getPhoneNumber())
                 .cashierNumber(cashier.getId())
                 .date(dateTime.toLocalDate())
                 .time(dateTime.toLocalTime())

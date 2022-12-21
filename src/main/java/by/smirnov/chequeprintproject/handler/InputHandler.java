@@ -1,4 +1,4 @@
-package by.smirnov.chequeprintproject.parser;
+package by.smirnov.chequeprintproject.handler;
 
 import by.smirnov.chequeprintproject.domain.Cashier;
 import by.smirnov.chequeprintproject.domain.DiscountCard;
@@ -10,15 +10,20 @@ import by.smirnov.chequeprintproject.repository.ProductRepository;
 import by.smirnov.chequeprintproject.repository.ProductSetRepositoryImpl;
 import by.smirnov.chequeprintproject.service.chequebuilder.ChequeCounter;
 import by.smirnov.chequeprintproject.service.chequebuilder.StringChequeBuilder;
+import by.smirnov.chequeprintproject.util.InputFileReader;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static by.smirnov.chequeprintproject.handler.InputHandlerConstants.DELIM_DASH;
+import static by.smirnov.chequeprintproject.handler.InputHandlerConstants.DELIM_SPACE;
+import static by.smirnov.chequeprintproject.handler.InputHandlerConstants.KEY_ARGS;
+import static by.smirnov.chequeprintproject.handler.InputHandlerConstants.KEY_FILE;
+import static by.smirnov.chequeprintproject.handler.InputHandlerConstants.KEY_START;
+
 public class InputHandler {
 
-    private static final String DIV = "-";
-    private static final String DIV_SPACE = " ";
     private final ProductRepository repository;
     private final DiscountCardRepository cardRepository;
 
@@ -28,10 +33,10 @@ public class InputHandler {
     }
 
     public void processCheque(String[] args) {
-        if (args[0].equalsIgnoreCase("java")) {
-            if (args[1].equalsIgnoreCase("CheckRunner")) {
+        if (args[0].equalsIgnoreCase(KEY_START)) {
+            if (args[1].equalsIgnoreCase(KEY_ARGS)) {
                 handleCheque(args);
-            } else if (args[1].equalsIgnoreCase("file")) {
+            } else if (args[1].equalsIgnoreCase(KEY_FILE)) {
                 List<String> lines = InputFileReader.readFile(args[2]);
                 for (String line : lines) {
                     handleCheque(line);
@@ -41,7 +46,7 @@ public class InputHandler {
     }
 
     private void handleCheque(String input) {
-        handleCheque(input.split(DIV_SPACE));
+        handleCheque(input.split(DELIM_SPACE));
     }
 
     private void handleCheque(String[] params) {
@@ -52,17 +57,17 @@ public class InputHandler {
         chequeBuilder.print(cashier);
     }
 
-    private Map<Product, Integer> getProductCart(String[] params){
+    private Map<Product, Integer> getProductCart(String[] params) {
         Map<Product, Integer> productCart = new HashMap<>();
         for (int i = 2; i < params.length - 2; i++) {
-            String[] productLine = params[i].split(DIV);
+            String[] productLine = params[i].split(DELIM_DASH);
             productCart.put(repository.findById(Long.parseLong(productLine[0])), Integer.parseInt(productLine[1]));
         }
         return productCart;
     }
 
     private Long getValue(String param) {
-        String[] keyAdValue = param.split(DIV);
+        String[] keyAdValue = param.split(DELIM_DASH);
         return Long.parseLong(keyAdValue[1]);
     }
 

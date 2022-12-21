@@ -28,4 +28,5 @@ public interface ChequeConstants {
     String TOTAL_AMT = "TOTAL";
     String PHONE = "tel. ";
     int LINE_WIDTH = 58;
+    String REPORT_FILENAME = "Cheques.txt";
 }

@@ -12,6 +12,7 @@ import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+import static by.smirnov.chequeprintproject.service.chequebuilder.ChequeConstants.REPORT_FILENAME;
 import static by.smirnov.chequeprintproject.util.PathGetter.getPath;
 
 @RequiredArgsConstructor
@@ -26,7 +27,7 @@ public class StringChequeBuilder {
     }
 
     public void writeToFile(StringBuilder cheque) {
-        String path = getPath("Cheques.txt");
+        String path = getPath(REPORT_FILENAME);
         try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
             writer.println(cheque);
         } catch (IOException e) {
@@ -56,9 +57,9 @@ public class StringChequeBuilder {
         LocalDateTime dateTime = LocalDateTime.now();
         return new StringBuilder()
                 .append(centrify(ChequeConstants.TITLE))
-                .append(centrify(cashier.getStore().name))
-                .append(centrify(cashier.getStore().address))
-                .append(centrify(ChequeConstants.PHONE + cashier.getStore().phoneNumber))
+                .append(centrify(cashier.getStore().getName()))
+                .append(centrify(cashier.getStore().getAddress()))
+                .append(centrify(ChequeConstants.PHONE + cashier.getStore().getPhoneNumber()))
                 .append(ChequeConstants.BLANK_LINE)
                 .append(String.format(ChequeConstants.FORMAT_DATE, cashier.getId(), dateTime))
                 .append(String.format(ChequeConstants.FORMAT_TIME, ChequeConstants.TIME, dateTime)
