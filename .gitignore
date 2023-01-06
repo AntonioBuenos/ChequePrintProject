@@ -35,3 +35,6 @@ out/
 
 ### VS Code ###
 .vscode/
+/gradle/
+/src/main/resources/Cheques.txt
+/src/main/resources/Input.txt
