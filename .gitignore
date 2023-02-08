@@ -38,3 +38,7 @@ out/
 /gradle/
 /src/main/resources/Cheques.txt
 /src/main/resources/Input.txt
+/gradlew
+/gradlew.bat
+/Cheque.JPG
+/chequebase.jpg
