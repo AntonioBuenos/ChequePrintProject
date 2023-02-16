@@ -14,7 +14,6 @@ import by.smirnov.chequeprintproject.service.chequebuilder.StringChequeBuilder;
 import by.smirnov.chequeprintproject.util.InputFileReader;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class InputHandler {
@@ -33,10 +32,8 @@ public class InputHandler {
             if (args[1].equalsIgnoreCase(InputHandlerConstants.KEY_ARGS)) {
                 handleCheque(args);
             } else if (args[1].equalsIgnoreCase(InputHandlerConstants.KEY_FILE)) {
-                List<String> lines = InputFileReader.readFile(args[2]);
-                for (String line : lines) {
-                    handleCheque(line);
-                }
+                InputFileReader.readFile(args[2])
+                        .forEach(this::handleCheque);
             }
         }
     }
